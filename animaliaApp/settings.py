@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-im33pp8+g_u514_29!lrfw2+6%$%^q(r*a4)%jk&tgc82_^9%z
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['.onrender.com']
+ALLOWED_HOSTS = ['animaliaapp.onrender.com']
 
 
 # Application definition
