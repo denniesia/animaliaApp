@@ -1,0 +1,61 @@
+{% extends 'common/base.html' %}
+
+{%  block content %}
+
+<!-- Dashboard Page -->
+<h2>Animals</h2>
+<section id="dashboard">
+    {% if animals %}
+        {% for animal in animals %}
+        <div class="animal">
+            <img src="{{ animal.image_url }}" alt="example1"/>
+            <h3 class="title">{{ animal.name }}</h3>
+            <p class="description">{{ animal.description }}</p>
+            <h5> Rating:
+              {% if animal.avg_rating %}
+                {{ animal.avg_rating|floatformat:2 }}
+              {% else %}
+                No ratings yet
+              {% endif %}
+            </h5>
+            <a class="details-btn" href="{% url 'details_animal' animal.id %}">More Info</a>
+        </div>
+        {% endfor %}
+
+
+</section>
+    {% else %}
+<h2>No animals info yet.</h2>
+    {% endif %}
+<h2>Owners</h2>
+<section id="dashboard">
+    {% if owners %}
+        {% for owner in owners %}
+
+        <div class="animal">
+
+            <img src="{{ owner.image_url }}" alt="example1"/>
+            <h3 class="title">{{ owner.name }}</h3>
+            {% if owner.gender != 'U' %}
+                <p class="gender">Gender: {{ owner.gender }}</p>
+            {% endif %}
+            {% if owner.age %}
+                <p class="age">Age: {{ owner.age }}</p>
+             {% endif %}
+            {% if owner.occupation %}
+                <p class="occupation">Occupation: {{ owner.occupation }}</p>
+            {% endif %}
+            {% if owner.hobby %}
+                <p class="hobby">Hobby: {{ owner.hobby }}</p>
+            {% endif %}
+            <a class="details-btn" href="{% url 'details_owner' owner.id %}">More Info</a>
+        </div>
+        {% endfor %}
+
+
+
+</section>
+    {% else %}
+<h2>No owners info yet.</h2>
+    {% endif %}
+{% endblock %}

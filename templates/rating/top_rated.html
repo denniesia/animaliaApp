@@ -1,0 +1,28 @@
+{% extends 'common/base.html' %}
+
+
+{% block content %}
+<h2>Ratings</h2>
+<section id="rating-board">
+    {% if animals_with_avg_rating %}
+        {% for animal in animals_with_avg_rating %}
+        <div class="animal">
+            <h3 class="place">Place: {{ animal.place }} </h3>
+            <img src="{{ animal.image_url }}" alt="example1"/>
+            <h3 class="title">{{ animal.name }}</h3>
+            <h5> Rating:
+              {% if animal.avg_rating %}
+                {{ animal.avg_rating|floatformat:2 }}
+              {% else %}
+                No ratings yet
+              {% endif %}
+            </h5>
+            <a class="details-btn" href="{% url 'details_animal' animal.id %}">More Info</a>
+        </div>
+        {% endfor %}
+
+    {% else %}
+<h2>No ratings yet.</h2>
+    {% endif %}
+</section>
+{% endblock %}

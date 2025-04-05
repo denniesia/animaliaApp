@@ -1,0 +1,18 @@
+{% extends 'common/base.html' %}
+
+{% block content %}
+
+<!-- Edit Animal Form -->
+<section id="edit">
+    <div class="form">
+        <h2>Edit Animal</h2>
+        <form class="edit-form" action="{% url 'edit_animal' animal.id %}" method=POST >
+            {{ form }}
+            {% csrf_token %}
+
+            <button type="submit">Edit</button>
+        </form>
+    </div>
+</section>
+
+{% endblock %}

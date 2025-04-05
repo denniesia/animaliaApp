@@ -1,0 +1,40 @@
+{% extends 'common/base.html' %}
+
+{% block content %}
+
+<section id="details">
+    <div id="details-wrapper">
+        <img
+                id="details-img"
+                src="{{ owner.image_url }}"
+                alt="example1"
+        />
+
+        <p id="details-title">{{ owner.name }}</p>
+        <div id="info-wrapper">
+            <div id="details-description">
+                <p id="Gender">Gender: {{ owner.gender }}</p>
+
+                <p id="age">Age: {{ owner.age }}</p>
+                <p id="occupation">Occupation: {{ owner.occupation }}</p>
+                <p id="hobby">Hobby: {{ owner.hobby }}</p>
+                <h4 id="animals">Owner of:
+                    {% if owner.animals.all %}
+                        {% for animal in owner.animals.all %}
+                            <li>{{ animal.name }}</li>
+                        {% endfor %}
+                        {% else %}
+                        <li>No animals</li>
+                    {% endif %}
+                </h4>
+            </div>
+            <!--Edit and Delete buttons -->
+            <div id="action-buttons">
+                <a href="{% url 'edit_owner' owner.id %}" id="edit-btn">Edit</a>
+                <a href="{% url 'delete_owner' owner.id %}" id="delete-btn">Delete</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
